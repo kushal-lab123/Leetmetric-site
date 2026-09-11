@@ -1,0 +1,339 @@
+/* ---------- GLOBAL RESET & BASE ---------- */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.mainContainer {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0.5rem;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    text-align: center;
+}
+
+/* ---------- CARD CONTAINER ---------- */
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #1e1e2f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1.2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s;
+}
+
+/* ---------- USER INPUT AREA ---------- */
+.user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.user p {
+    color: white;
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    margin: 0.2rem 0 0.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+#username {
+    flex: 1 1 200px;
+    min-width: 0;
+    height: 42px;
+    padding: 0 1rem;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+    color: #111;
+}
+
+#username:focus {
+    box-shadow: 0 0 0 3px #4c90af;
+}
+
+#submit {
+    flex: 0 0 auto;
+    height: 42px;
+    padding: 0 1.8rem;
+    border-radius: 30px;
+    border: none;
+    background-color: #4c90af;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+}
+
+#submit:hover {
+    background-color: #3a7a96;
+}
+
+#submit:active {
+    transform: scale(0.96);
+}
+
+/* ---------- STATS SECTION ---------- */
+.stats {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* circles row */
+.circle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.box {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: conic-gradient(#299f5d var(--progress-degree, 0%), #84c79a 0%);
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+}
+
+#mediumCircle {
+    background: conic-gradient(#e9e069 var(--progress-degree, 0%), #b7c471 0%);
+}
+
+#hardCircle {
+    background: conic-gradient(#da4e4e var(--progress-degree, 0%), #b98585 0%);
+}
+
+.box span {
+    font-size: 1.1rem;
+    transform: translate(0, 0);  /* replaces invalid translate:(-50%,-50%) */
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    line-height: 1;
+}
+
+/* solved badges row */
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+.solved {
+    background-color: #4c90af;
+    color: white;
+    padding: 0.5rem 0.8rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: center;
+    min-width: 100px;
+    flex: 0 1 auto;
+    transition: background 0.2s;
+}
+
+/* keep the easy/medium/hard colors consistent */
+#Easy.solved,
+#Easy {
+    background-color: #2e7d5e;  /* a nicer easy green - optional but matches theme */
+}
+#Medium.solved,
+#Medium {
+    background-color: #b7a43b;  /* warm medium */
+}
+#Hard.solved,
+#Hard {
+    background-color: #b14b4b;  /* hard red */
+}
+
+/* specific width for medium, but flexible */
+#medium {
+    width: auto;
+    flex-shrink: 1;
+}
+
+/* ---------- RESPONSIVE FINE-TUNING ---------- */
+
+/* mobile: up to 480px */
+@media (max-width: 480px) {
+    .mainContainer {
+        justify-content: flex-start;
+        padding-top: 2rem;
+    }
+
+    .container {
+        padding: 1.2rem 0.8rem;
+        border-radius: 1rem;
+    }
+
+    .circle {
+        gap: 0.8rem;
+    }
+
+    .box {
+        width: 90px;
+        height: 90px;
+        font-size: 0.9rem;
+    }
+
+    .box span {
+        font-size: 0.9rem;
+    }
+
+    .solved {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+        min-width: 80px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    #username {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    #submit {
+        width: 100%;
+        max-width: 200px;
+        padding: 0 1rem;
+    }
+
+    .stats {
+        margin-top: 1.5rem;
+    }
+}
+
+/* tablet: 481px – 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        max-width: 580px;
+    }
+
+    .box {
+        width: 110px;
+        height: 110px;
+    }
+
+    .box span {
+        font-size: 1rem;
+    }
+
+    .solved {
+        font-size: 0.85rem;
+        min-width: 90px;
+    }
+
+    .circle {
+        gap: 1rem;
+    }
+}
+
+/* larger screens – keep as is, but just ensure no overflow */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 700px;
+        padding: 2rem 2rem;
+    }
+
+    .box {
+        width: 140px;
+        height: 140px;
+    }
+
+    .box span {
+        font-size: 1.2rem;
+    }
+
+    .solved {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+        min-width: 120px;
+    }
+
+    .stats {
+        margin-top: 2.5rem;
+    }
+}
+
+/* very small devices (less than 360px) extra care */
+@media (max-width: 360px) {
+    .box {
+        width: 75px;
+        height: 75px;
+    }
+
+    .box span {
+        font-size: 0.75rem;
+    }
+
+    .solved {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.4rem;
+        min-width: 65px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .user p {
+        font-size: 0.9rem;
+    }
+}
