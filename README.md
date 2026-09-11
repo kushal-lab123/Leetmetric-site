@@ -7,7 +7,7 @@ A simple web app that shows your LeetCode problem-solving stats by username.
   by Tashif Ahmad Khan
 
 ## Live Demo
-[Live site](https://kushal-lab123.github.io/Leetmetric-site/)
+[Leetcode stats site](https://kushal-lab123.github.io/Leetmetric-site/)
 
 
 // Uses third-party API: https://github.com/tashifkhan/leetcode-stats-api
